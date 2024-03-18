@@ -189,7 +189,7 @@ export default function Todo({
             placeholder="Add Todo"
             size="lg"
             variant="outlined"
-            sx={{ width: 400 }}
+            sx={{ width: 300 }}
           />
         ) : (
           <p
