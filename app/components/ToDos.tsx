@@ -13,14 +13,7 @@ import {
 } from "@/lib/features/todos/todosSlice";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-  Button,
-  Checkbox,
-  IconButton,
-  Input,
-  Skeleton,
-  Typography,
-} from "@mui/joy";
+import { Button, Checkbox, IconButton, Input, Typography } from "@mui/joy";
 import { Check, Edit, Plus, Trash } from "lucide-react";
 import { todoSchema } from "@/lib/zodSchemas";
 
@@ -171,7 +164,6 @@ export default function Todo({
       >
         <Checkbox
           className="self-start py-1"
-          // onChange={() => dispatch(toggleTodoIsDoneStatus(i))}
           variant="plain"
           size="lg"
           checked={todo.isDone}
