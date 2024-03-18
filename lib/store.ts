@@ -1,6 +1,6 @@
 import type { Action, Middleware, ThunkAction } from "@reduxjs/toolkit";
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { todosSlice } from "./features/todos/todosSlice";
+import { setInitialTodoState, todosSlice } from "./features/todos/todosSlice";
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
@@ -10,13 +10,10 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const localStorageMiddleware: Middleware<{}, RootState> =
   (store) => (next) => (action) => {
-    console.log("Before dispatch:", action, "state: ", store.getState());
-
     const result = next(action);
 
-    localStorage.setItem("todos", JSON.stringify(store.getState().todos));
-
-    console.log("After dispatch:", store.getState());
+    if (!setInitialTodoState.match(action))
+      localStorage.setItem("todos", JSON.stringify(store.getState().todos));
 
     return result;
   };
